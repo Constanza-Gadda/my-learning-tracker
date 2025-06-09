@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coty's Coding Journey 🚀</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto, Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            color: #4a5568;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            color: #718096;
+            margin-bottom: 20px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #718096;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            color: #4a5568;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            font-weight: 600;
+        }
+
+        .skill-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .skill-item:last-child {
+            border-bottom: none;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            color: #4a5568;
+            flex: 1;
+        }
+
+        .skill-progress {
+            flex: 2;
+            margin: 0 20px;
+        }
+
+        .progress-bar {
+            background: #e2e8f0;
+            border-radius: 10px;
+            height: 8px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 10px;
+            transition: width 0.8s ease;
+        }
+
+        .skill-level {
+            font-size: 0.9em;
+            color: #718096;
+            min-width: 80px;
+            text-align: right;
+        }
+
+        .learning-log {
+            display: grid;
+            gap: 15px;
+        }
+
+        .log-entry {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.2s ease;
+        }
+
+        .log-entry:hover {
+            transform: translateX(5px);
+        }
+
+        .log-date {
+            font-size: 0.9em;
+            color: #718096;
+            margin-bottom: 8px;
+        }
+
+        .log-content {
+            color: #4a5568;
+            font-weight: 500;
+        }
+
+        .goals-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .goal-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: #f7fafc;
+            border-radius: 12px;
+            transition: background 0.2s ease;
+        }
+
+        .goal-item:hover {
+            background: #edf2f7;
+        }
+
+        .goal-checkbox {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid #667eea;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: white;
+            background: #667eea;
+        }
+
+        .goal-text {
+            color: #4a5568;
+            font-weight: 500;
+        }
+
+        .tips-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .tips-section h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .tip {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .tip:last-child {
+            margin-bottom: 0;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .header {
+                padding: 25px;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .skill-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .skill-progress {
+                width: 100%;
+                margin: 0;
+            }
+
+            .skill-level {
+                align-self: flex-end;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <h1>🚀 Coty's Coding Journey</h1>
+            <p>13-year-old learning to code and sharing the adventure!</p>
+            <p><strong>Mission:</strong> Build awesome websites and help other kids start coding</p>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number" id="days-coding">1</div>
+                <div class="stat-label">Days Coding</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">3</div>
+                <div class="stat-label">Skills Learning</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">1</div>
+                <div class="stat-label">Projects Built</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">∞</div>
+                <div class="stat-label">Excitement Level</div>
+            </div>
+        </div>
+
+        <!-- Skills Progress Section -->
+        <div class="section">
+            <h2>🎯 Skills I'm Learning</h2>
+            <div class="skill-item">
+                <div class="skill-name">HTML</div>
+                <div class="skill-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 15%;"></div>
+                    </div>
+                </div>
+                <div class="skill-level">Just Started!</div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-name">CSS</div>
+                <div class="skill-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 10%;"></div>
+                    </div>
+                </div>
+                <div class="skill-level">Learning Soon</div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-name">JavaScript</div>
+                <div class="skill-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 5%;"></div>
+                    </div>
+                </div>
+                <div class="skill-level">Future Goal</div>
+            </div>
+        </div>
+
+        <!-- Learning Log Section -->
+        <div class="section">
+            <h2>📚 What I've Learned</h2>
+            <div class="learning-log">
+                <div class="log-entry">
+                    <div class="log-date">Today - Day 1</div>
+                    <div class="log-content">🎉 Started my coding journey! Learned what HTML, CSS, and JavaScript do. Created my first website with Claude's help. It actually works well!</div>
+                </div>
+                <div class="log-entry">
+                    <div class="log-date">Coming Soon...</div>
+                    <div class="log-content">More awesome learning adventures to be added here!</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Goals Section -->
+        <div class="section">
+            <h2>🎯 My Coding Goals</h2>
+            <div class="goals-list">
+                <div class="goal-item">
+                    <div class="goal-checkbox">✓</div>
+                    <div class="goal-text">Create my first website (Learning Tracker)</div>
+                </div>
+                <div class="goal-item">
+                    <div class="goal-checkbox">2</div>
+                    <div class="goal-text">Learn HTML basics in Week 1</div>
+                </div>
+                <div class="goal-item">
+                    <div class="goal-checkbox">3</div>
+                    <div class="goal-text">Add CSS styling to make it look amazing</div>
+                </div>
+                <div class="goal-item">
+                    <div class="goal-checkbox">4</div>
+                    <div class="goal-text">Make it work perfectly on phones</div>
+                </div>
+                <div class="goal-item">
+                    <div class="goal-checkbox">5</div>
+                    <div class="goal-text">Publish it live for my family to see</div>
+                </div>
+                <div class="goal-item">
+                    <div class="goal-checkbox">6</div>
+                    <div class="goal-text">Help other kids start their coding journey</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tips for Other Kids Section -->
+        <div class="tips-section">
+            <h2>💡 Tips for Other Kids Who Want to Start Coding</h2>
+            <div class="tip">
+                <strong>Start with a project you're excited about!</strong> I chose a learning tracker because I wanted to see my progress. Pick something that makes YOU curious.
+            </div>
+            <div class="tip">
+                <strong>Don't worry about being perfect.</strong> My first website won't be perfect, and that's totally okay! Every coder started with simple projects.
+            </div>
+            <div class="tip">
+                <strong>Use AI to help you learn.</strong> Claude is like having a super patient teacher who never gets tired of explaining things!
+            </div>
+            <div class="tip">
+                <strong>Build in public!</strong> Share your progress with family and friends. They'll be your biggest cheerleaders!
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>🌟 Keep coding, keep learning, keep building awesome things! 🌟</p>
+            <p>Want to start your own coding journey? Ask me how!</p>
+        </div>
+    </div>
+
+    <script>
+        // Simple day counter that updates
+        function updateDayCounter() {
+            const startDate = new Date('2024-06-05'); // Today's date
+            const today = new Date();
+            const diffTime = Math.abs(today - startDate);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            
+            document.getElementById('days-coding').textContent = diffDays;
+        }
+
+        // Update the counter when page loads
+        updateDayCounter();
+
+        // Add some fun hover effects
+        document.querySelectorAll('.stat-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-5px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Animate progress bars when they come into view
+        function animateProgressBars() {
+            const progressBars = document.querySelectorAll('.progress-fill');
+            progressBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0%';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 500);
+            });
+        }
+
+        // Run animation when page loads
+        window.addEventListener('load', () => {
+            setTimeout(animateProgressBars, 1000);
+        });
+    </script>
+</body>
+</html>
